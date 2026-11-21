@@ -80,9 +80,14 @@ function App() {
   }
 
   function filtrer() {
-    setStagiaires2(stagiaires.filter((s) => s.nom == nom && s.ville == ville));
+    const rech = stagiaires.filter(item =>{
+      return recherche == item.nom
+    })
+    setStagiaires2(
+      rech
+      
+    )
   }
-
   function initialiser() {
     setStagiaires2([]);
   }
@@ -161,12 +166,14 @@ function App() {
       <div>
         <table>
         <tbody>
-          {stagiaires2.map((e) => (
-            <tr>
+          {stagiaires2.map(e=>{
+            return(
+             <tr>
               <td>{e.nom}</td>
               <td>{e.ville}</td>
-            </tr>
-          ))}
+             </tr>
+            )
+          })}
         </tbody>
         </table>
         <button onClick={filtrer}>Filtrer</button>
